@@ -57,18 +57,22 @@ def deletar_banco(request, id):
     return redirect('/perfil/gerenciar/')
 
 def cadastrar_categoria(request):
-    nome = request.POST.get('categoria')
-    essencial = bool(request.POST.get('essencial'))
+	nome = request.POST.get('categoria')
+	essencial = bool(request.POST.get('essencial'))
+    
+	if len(nome.strip()) == 0:
+		messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
+		return redirect('/perfil/gerenciar/')
 
-    categoria = Categoria(
+	categoria = Categoria(
         categoria = nome,
         essencial = essencial
     )
 
-    categoria.save()
+	categoria.save()
 
-    messages.add_message(request, constants.SUCCESS, 'Categoria cadastrada com sucesso')
-    return redirect('/perfil/gerenciar/')
+	messages.add_message(request, constants.SUCCESS, 'Categoria cadastrada com sucesso')
+	return redirect('/perfil/gerenciar/')
 
 def update_categoria(request, id):
     categoria = Categoria.objects.get(id = id)
