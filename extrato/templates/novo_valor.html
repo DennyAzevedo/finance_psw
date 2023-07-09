@@ -1,14 +1,11 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 {% block 'head' %}
-
     <link href="{% static 'perfil/css/home.css' %}" rel="stylesheet">
     <link href="{% static 'perfil/css/gerenciar.css' %}" rel="stylesheet">
-
 {% endblock %}
 
 {% block 'body' %}
-
     <div class="container">
         <br>
         {% if messages %}
@@ -19,7 +16,6 @@
         <br>
         <span class="fonte-destaque">Adicionar entradas/saídas</span>
         <div class="row">
-
             <div class="col-md-7">
                 <form action="{% url 'novo_valor' %}" method="POST">{% csrf_token %}
                     <div class="row">
@@ -27,7 +23,6 @@
                             <label>Valor</label>
                             <input name="valor" type="text" class="form-control">
                         </div>
-
                         <div class="col-md">
                             <label>Categoria</label>
 							<select name="categoria" class="form-select">
@@ -46,7 +41,6 @@
                             <label>Data</label>  
                             <input name="data" type="date" class="form-control">
                         </div>
-
                         <div class="col-md">
                             <label>Conta</label>
                             <select name="conta" class="form-select">
@@ -62,15 +56,10 @@
                     <br>
                     <br>
                     <input type="submit" style="width:40%;" class="botao-principal">
-
                 </form>
             </div>
-
             <div class="col-md-8">
             </div>
-
         </div>
-
     </div>
-
 {% endblock %}
